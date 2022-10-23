@@ -53,6 +53,14 @@ class FakeLambdaContext(object):
     @property
     def log(self):
         return sys.stdout.write
+    
+    @property
+    def client_context(self):
+        return ClientContext(custom = {'origin_request_id': '1234567890'})
+
+class ClientContext(object):
+    def __init__(self, custom): 
+        self.custom = custom   
 
 logging.basicConfig()
 
